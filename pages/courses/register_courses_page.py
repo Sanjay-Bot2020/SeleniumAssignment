@@ -1,6 +1,8 @@
 from base.selenium_driver import SeleniumDriver
 import time
 
+
+
 class RegisterCoursesPage(SeleniumDriver):
     def __init__(self, driver):
         super().__init__(driver)
@@ -93,15 +95,15 @@ class RegisterCoursesPage(SeleniumDriver):
         errorMessageText = errorMessage.text
         return errorMessageText
 
-    def verify_enroll_failed(self):
+    def verify_enroll_failed(self, course, ccNum, ccExp, ccCVV):
         self.clickOnAllCourses()
-        self.searchCourseName("JavaScript")
-        self.selectCourseToEnroll("JavaScript for beginners")
+        self.searchCourseName(course)
+        self.selectCourseToEnroll(course)
         self.enrollCourse()
         self.scrollingDown()
-        self.enterCreditCardInformation("5546370221081234", "0710", "321")
-        time.sleep(10)
+        self.enterCreditCardInformation(ccNum, ccExp, ccCVV)
+        time.sleep(4)
         result = self.verify_for_appearnce_of_error_message()
-        return result
-
-
+        assert result == 'Your card number is invalid.'
+        self.clickOnAllCourses()
+        # return result
