@@ -1,0 +1,5 @@
+.cache/
+.ideal/
+.pytest_cache/
+*.log
+*__pycache__/
