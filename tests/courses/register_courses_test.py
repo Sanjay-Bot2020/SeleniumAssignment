@@ -22,7 +22,7 @@ class Test_Register_Courses(unittest.TestCase):
     @pytest.mark.run(order=2)
     @data(("JavaScript for beginners", "5546370221081234", "0710", "321"),
           ("Learn Python 3 from scratch", "5546370221085678", "0711", "456"),
-          ("Complete Test Automation Bundle", "5546370221085678", "0711", "456"))
+          ("Selenium WebDriver 4 With Python", "5546370221085678", "0711", "456"))
     @unpack
     def test_verify_enroll_failed(self, course, ccNum, ccExp, ccCVV):
         # errorMessage = self.rcp.verify_enroll_failed()
