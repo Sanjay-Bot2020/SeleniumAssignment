@@ -12,16 +12,17 @@ class Test_Register_Courses(unittest.TestCase):
     def classSetUp(self, init_driver, request):
         self.rcp = RegisterCoursesPage(self.driver)
 
-    # @pytest.mark.run(order=1)
-    # def test_verify_valid_login(self):
-    #     email = "Sanjay.Joshi2020@gmail.com"
-    #     password = "Phase3@1980"
-    #     result = self.rcp.verify_valid_login(email, password)
-    #     assert result == True
+    @pytest.mark.run(order=1)
+    def test_verify_valid_login(self):
+        email = "Sanjay.Joshi2020@gmail.com"
+        password = "Phase3@1980"
+        result = self.rcp.verify_valid_login(email, password)
+        assert result == True
 
     @pytest.mark.run(order=2)
     @data(("JavaScript for beginners", "5546370221081234", "0710", "321"),
-          ("Learn Python 3 from scratch", "5546370221085678", "0711", "456"))
+          ("Learn Python 3 from scratch", "5546370221085678", "0711", "456"),
+          ("Complete Test Automation Bundle", "5546370221085678", "0711", "456"))
     @unpack
     def test_verify_enroll_failed(self, course, ccNum, ccExp, ccCVV):
         # errorMessage = self.rcp.verify_enroll_failed()
